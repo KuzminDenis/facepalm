@@ -1,0 +1,15 @@
+{% extends 'fp_app/base.html' %}
+
+{% block content %}
+    <p><h1> Hi there! </h1></p>
+    <ol>
+        <li> Upload an image with face(s); </li>
+        <li> Get facepalmed; </li>
+        <li> ??? </li>
+        <li> Profit! </li>       
+    </ol>
+    
+    <a href="{% url 'fp_app.views.new' %}" class="top-menu"><span class="glyphicon glyphicon-hand-right"></span></a>
+    <br><br><br><br>
+    
+{% endblock %}
