@@ -39,7 +39,9 @@ class Palmer(models.Model):
         #result_url = self.result_relative_url()
         result_url = os.path.join(settings.BASE_DIR, self.raw_image.url[1:-4]+'_processed.jpg')
         
-        face_cascade = cv2.CascadeClassifier('face_cascade.xml')
+        cascade_url = os.path.join(settings.BASE_DIR, 'face_cascade.xml')
+        face_cascade = cv2.CascadeClassifier(cascade_url)
+        #face_cascade = cv2.CascadeClassifier('face_cascade.xml')
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
         for (x,y,w,h) in faces:
