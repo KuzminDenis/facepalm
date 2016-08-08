@@ -2,6 +2,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 import cv2
+import os
+from django.conf import settings
+#from .. import settings
 
 def scale_image(img, size):
     rows, cols, _ = img.shape
@@ -24,7 +27,10 @@ class Palmer(models.Model):
         return self.raw_image.url[:-4] + '_processed.jpg'
     
     def process(self):
-        img = cv2.imread(self.raw_image.url[1:])
+        path = os.path.join(settings.BASE_DIR, self.raw_image.url[1:]) 
+        print path
+        img = cv2.imread(path)
+        #img = cv2.imread(self.raw_image.url)
         
         #cv2.rectangle(img, (20,20), (100, 100), (0, 255, 0), 5)
         

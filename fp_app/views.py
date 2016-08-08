@@ -12,7 +12,7 @@ def new(request):
         if form.is_valid():
         
             palmer = form.save()    
-            #palmer.process()
+            palmer.process()
             
         #return redirect('fp_app.views.details', pk=palmer.id)
         return redirect('details', pk=palmer.id)
@@ -24,7 +24,7 @@ def new(request):
 def details(request, pk):
     
     palmer = get_object_or_404(Palmer, id=pk)
-    return render(request, 'fp_app/details.html', {'result_url':palmer.raw_image.url})
-    #return render(request, 'fp_app/details.html', {'result_url':palmer.result_absolute_url()})
+    #return render(request, 'fp_app/details.html', {'result_url':palmer.raw_image.url})
+    return render(request, 'fp_app/details.html', {'result_url':palmer.result_absolute_url()})
     
     
