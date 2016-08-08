@@ -25,7 +25,9 @@ class Palmer(models.Model):
     
     def result_absolute_url(self):
         return self.raw_image.url[:-4] + '_processed.jpg'
-    
+        #path = os.path.join(settings.BASE_DIR, self.raw_image.url[1:-4]+'_processed.jpg')
+        #return path
+
     def process(self):
         path = os.path.join(settings.BASE_DIR, self.raw_image.url[1:]) 
         print path
@@ -34,8 +36,9 @@ class Palmer(models.Model):
         
         #cv2.rectangle(img, (20,20), (100, 100), (0, 255, 0), 5)
         
-        result_url = self.result_relative_url()
-
+        #result_url = self.result_relative_url()
+        result_url = os.path.join(settings.BASE_DIR, self.raw_image.url[1:-4]+'_processed.jpg')
+        
         face_cascade = cv2.CascadeClassifier('face_cascade.xml')
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
